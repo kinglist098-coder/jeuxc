@@ -74,14 +74,18 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     
     // Also sync with our local JSON backend if needed for orders/reviews consistency
     const token = localStorage.getItem("token");
-    await fetch("/api/auth/me", {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
-      },
-      body: JSON.stringify({ firstName, lastName })
-    });
+    try {
+      await fetch("/api/auth/me", {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+        },
+        body: JSON.stringify({ firstName, lastName })
+      });
+    } catch (syncErr) {
+      console.error("Erreur de synchronisation backend lors de l'update profil:", syncErr);
+    }
     
     setUser(mapUser(data.user));
   };
