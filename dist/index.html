@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Appiotti Game Shop</title>
+    <script>
+      window.onerror = function(msg, url, line, col, error) {
+        console.error("Critial Error:", msg, error);
+        var div = document.createElement('div');
+        div.style.cssText = 'position:fixed;top:0;left:0;right:0;background:#ff4444;color:white;padding:20px;z-index:9999;font-family:sans-serif;font-weight:bold;';
+        div.innerHTML = 'Erreur au chargement : ' + msg + '<br/><small>Vérifiez vos variables d\'environnement Netlify (SUPABASE_URL, etc.)</small>';
+        document.body.appendChild(div);
+      };
+    </script>
+    <script type="module" crossorigin src="/assets/index-C3ZPdUcW.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-D0lQqKDJ.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
+
